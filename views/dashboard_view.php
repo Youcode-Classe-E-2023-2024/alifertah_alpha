@@ -15,7 +15,7 @@
         <div class="bg-blue-500 p-4 rounded-md shadow-md text-white">
             <h2 class="text-xl font-semibold mb-2">Metrics Section</h2>
             <!-- Example Metrics Content -->
-            <p>Total Users: 100</p>
+            <p id="totalPosts">Total Posts: </p>
             <p>Active Users: 75</p>
         </div>
 
@@ -46,12 +46,12 @@
     </div>
 
     <script>
-        // Chart.js code
+        let usersCount, postsCount = 0;
         var data = {
             labels: ["January", "February", "March", "April", "May"],
             datasets: [{
                 label: "Monthly Sales",
-                backgroundColor: "rgba(75,192,192,0.4)",
+                backgroundColor: "rgba(75,192,192,1)",
                 borderColor: "rgba(75,192,192,1)",
                 data: [65, 59, 80, 81, 56]
             }]
@@ -68,7 +68,18 @@
             data: data,
             options: options
         });
-    </script>
+
+
+        fetch("https://jsonplaceholder.typicode.com/posts")
+        .then(response => response.json())
+        .then(data =>{
+            data.map((val)=>{
+                if(val.id)
+                postsCount++;
+            })
+            document.getElementById("totalPosts").innerHTML += postsCount
+        })
+        </script>
 </body>
 
 </html>
