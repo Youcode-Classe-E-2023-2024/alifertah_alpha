@@ -10,11 +10,9 @@
 </head>
 
 <body class="bg-gray-100 font-sans">
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-semibold mb-4">XENO Dashboard</h1>
-
+    <div class="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
         <!-- Metrics Section -->
-        <div class="bg-white p-4 rounded-md shadow-md mb-4">
+        <div class="bg-blue-500 p-4 rounded-md shadow-md text-white">
             <h2 class="text-xl font-semibold mb-2">Metrics Section</h2>
             <!-- Example Metrics Content -->
             <p>Total Users: 100</p>
@@ -22,13 +20,13 @@
         </div>
 
         <!-- Graph Section -->
-        <div class="bg-white p-4 rounded-md shadow-md mb-4">
+        <div class="bg-green-500 p-4 rounded-md shadow-md text-white">
             <h2 class="text-xl font-semibold mb-2">Graph Section</h2>
             <canvas id="myChart" width="400" height="200"></canvas>
         </div>
 
         <!-- Product Overview Section -->
-        <div class="bg-white p-4 rounded-md shadow-md mb-4">
+        <div class="bg-yellow-500 p-4 rounded-md shadow-md text-white">
             <h2 class="text-xl font-semibold mb-2">Product Overview</h2>
             <!-- Example Product Content -->
             <ul>
@@ -39,7 +37,7 @@
         </div>
 
         <!-- PDF Statistics Section -->
-        <div class="bg-white p-4 rounded-md shadow-md mb-4">
+        <div class="bg-purple-500 p-4 rounded-md shadow-md text-white">
             <h2 class="text-xl font-semibold mb-2">PDF Statistics</h2>
             <!-- Example PDF Statistics Content -->
             <p>Total Downloads: 500</p>
