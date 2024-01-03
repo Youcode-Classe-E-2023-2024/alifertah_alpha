@@ -16,7 +16,7 @@
             <h2 class="text-xl font-semibold mb-2">Metrics Section</h2>
             <!-- Example Metrics Content -->
             <p id="totalPosts">Total Posts: </p>
-            <p>Active Users: 75</p>
+            <p id="totalUsers">Total Users: 75</p>
         </div>
 
         <!-- Graph Section -->
@@ -46,7 +46,6 @@
     </div>
 
     <script>
-        let usersCount, postsCount = 0;
         var data = {
             labels: ["January", "February", "March", "April", "May"],
             datasets: [{
@@ -68,18 +67,37 @@
             data: data,
             options: options
         });
+        async function fetchData(url) {
+            try {
+                let count = 0;
 
+                const response = await fetch(url);
+                const data = await response.json();
 
-        fetch("https://jsonplaceholder.typicode.com/posts")
-        .then(response => response.json())
-        .then(data =>{
-            data.map((val)=>{
-                if(val.id)
-                postsCount++;
-            })
-            document.getElementById("totalPosts").innerHTML += postsCount
-        })
-        </script>
+                data.forEach((val) => {
+                    if (val.id) {
+                        count++;
+                    }
+                });
+
+                return count;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                throw error;
+            }
+        }
+
+        async function updateTotalPosts() {
+            try {
+                const count = await fetchData("https://jsonplaceholder.typicode.com/posts");
+                document.getElementById("totalPosts").innerHTML += count;
+            } catch (error) {
+                console.error('Error updating total posts:', error);
+            }
+        }
+
+        updateTotalPosts();
+    </script>
 </body>
 
 </html>
