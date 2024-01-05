@@ -18,9 +18,9 @@
     fetch("https://jsonplaceholder.typicode.com/users")
             .then(response => response.json())
             .then(data => {
-                data.map((val) => {
+                data.map((val, key) => {
                     r += `
-                    <tr>
+                    <tr id=${key}>
             <td class="px-6 py-4 whitespace-nowrap">${val.name}</td>
             <td class="px-6 py-4 whitespace-nowrap">${val.email}</td>
             <td class="px-6 py-4 whitespace-nowrap">${val.username}</td>
@@ -29,16 +29,19 @@
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
                 <button class="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
-                <button onclick="handleDelete(${val.id})" class="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
+                <button onclick="handleDelete(${key})" class="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
             </td>
         </tr>
-`
+        `
                 });
                 table.innerHTML = r
             });
 
+            var arr = []
 
             function handleDelete(id){
+                document.getElementById(id).style.display = "none"
+
                 fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
                     method: "DELETE"
                 })
