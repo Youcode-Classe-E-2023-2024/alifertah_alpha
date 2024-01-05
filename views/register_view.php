@@ -57,10 +57,11 @@
 		})
 		.then(response => response.json())
 		.then(data =>{
-			console.log("error")
 			if(data.error){
-				console.log(data.error)
 				document.getElementById('error').innerHTML = data.error
+			}
+			if(data.success){
+				window.location.href = "index.php?page=login";
 			}
 		})
 	})
