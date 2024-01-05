@@ -13,6 +13,7 @@
 			placeholder="password"
 		/>
 		<button
+			id="login"
 			class="inline-block mt-2 bg-green-600 hover:bg-green-700 focus:bg-green-800 px-6 py-2 rounded text-white shadow-lg"
 			type="submit" name="login"
 		>
@@ -36,3 +37,40 @@
 		&copy;2022 Acme Corporation. All rights reserved.
 	</p>
 </div>
+<script>
+
+	document.getElementById("login").addEventListener("click", (event)=>{
+		event.preventDefault()
+		var formData = new FormData()
+		const email = document.getElementById("email")
+		const password = document.getElementById("password")
+	
+		formData.append("email", email.value)
+		formData.append("password", password.value)
+		fetch("index.php?page=logint_traitement", {
+			method: 'POST',
+			body: formData
+		})
+		.then(response => response.json())
+		.then(data => {
+			if(data.error){
+				Swal.fire({
+					icon: 'error',
+					title: 'Error',
+					text: data.error,
+					confirmButtonColor: '#34D399',
+				});
+				// document.getElementById('error').innerHTML = data.error
+			}
+			if(data.success){
+				Swal.fire({
+				title: "Success",
+				text: data.success,
+				confirmButtonColor: '#34D399',
+				icon: "success",
+				});
+				setTimeout(()=>{window.location.href = "index.php?page=dashboard"}, 1000)
+			}
+		})
+	})
+</script>

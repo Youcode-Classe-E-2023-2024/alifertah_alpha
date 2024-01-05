@@ -1,5 +1,4 @@
 <!-- Add this line in your <head> section -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="flex flex-col items-center justify-center min-h-screen bg-white">
 	<div class="bg-green-400 w-full sm:w-3/4 max-w-lg p-12 pb-6 shadow-2xl rounded">
 		<div class="text-white pb-4 text-3xl font-semibold">Create an account</div>
@@ -75,7 +74,7 @@
 				confirmButtonColor: '#34D399',
 				icon: "success",
 				});
-				setTimeout(()=>{window.location.href = "index.php?page=login";}, 1000)
+				setTimeout(()=>{window.location.href = "index.php?page=login"}, 1000)
 			}
 		})
 	})
