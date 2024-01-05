@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" 
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <title>XENO Dashboard</title>
-</head>
-
-<body class="bg-gray-100 font-sans">
     <div class="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
         <!-- Metrics Section -->
         <div class="md:col-span-1 lg:col-span-1 flex flex-col justify-center">
@@ -51,19 +34,15 @@
 
 
     <!-- DataTable Product Content -->
-    <div class="container mx-auto p-4">
-        <div class="bg-blue-400 p-4 rounded-md shadow-md text-black">
-            <h2 class="text-xl font-semibold mb-2">Product Overview</h2>
-            <table id="productTable" class="table-auto w-full">
-                <thead>
-                    <tr class="bg-blue-400 text-white">
-                        <th class="px-4 py-2">Product</th>
-                    </tr>
-                </thead>
-                <tbody id="products"></tbody>
-            </table>
-        </div>
-    </div>
+    <table class="min-w-full divide-y divide-gray-200">
+    <thead>
+        <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+        </tr>
+    </thead>
+    <tbody id="products" class="bg-white divide-y divide-gray-200">
+    </tbody>
+</table>
 
     <script>
         $(document).ready(function () {
@@ -177,6 +156,3 @@
             });
         
     </script>
-</body>
-
-</html>
