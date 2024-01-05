@@ -17,6 +17,7 @@
 			autocomplete="off" id="password" name="password" type="password"
 			placeholder="password"
 		/>
+		<p id="error" class="text-red-500 font-bold">hh</p>
 		<button
 			class="inline-block mt-2 bg-green-600 hover:bg-green-700 focus:bg-green-800 px-6 py-2 rounded text-white shadow-lg"
 			type="submit" name="register"
@@ -56,7 +57,11 @@
 		})
 		.then(response => response.json())
 		.then(data =>{
-			console.log(data.msg)
+			console.log("error")
+			if(data.error){
+				console.log(data.error)
+				document.getElementById('error').innerHTML = data.error
+			}
 		})
 	})
 </script>
