@@ -1,3 +1,5 @@
+<!-- Add this line in your <head> section -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="flex flex-col items-center justify-center min-h-screen bg-white">
 	<div class="bg-green-400 w-full sm:w-3/4 max-w-lg p-12 pb-6 shadow-2xl rounded">
 		<div class="text-white pb-4 text-3xl font-semibold">Create an account</div>
@@ -17,7 +19,7 @@
 			autocomplete="off" id="password" name="password" type="password"
 			placeholder="password"
 		/>
-		<p id="error" class="text-red-500 font-bold">hh</p>
+		<!-- <p id="error" class="text-red-500 font-bold">hh</p> -->
 		<button
 			class="inline-block mt-2 bg-green-600 hover:bg-green-700 focus:bg-green-800 px-6 py-2 rounded text-white shadow-lg"
 			type="submit" name="register"
@@ -58,7 +60,13 @@
 		.then(response => response.json())
 		.then(data =>{
 			if(data.error){
-				document.getElementById('error').innerHTML = data.error
+				Swal.fire({
+					icon: 'error',
+					title: 'Error',
+					text: data.error,
+					confirmButtonColor: '#34D399',
+				});
+				// document.getElementById('error').innerHTML = data.error
 			}
 			if(data.success){
 				window.location.href = "index.php?page=login";
