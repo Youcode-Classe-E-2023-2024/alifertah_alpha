@@ -19,7 +19,6 @@ if (isset($_POST['email'], $_POST['password'], $_POST['username'])) {
         } else {
             echo json_encode(array("error" => "Failed to register user"));
         }
-
         $stmt->close();
     } else {
         echo json_encode(array("error" => "Please enter a valid email"));
