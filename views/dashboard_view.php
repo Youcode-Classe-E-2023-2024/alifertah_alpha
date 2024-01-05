@@ -18,7 +18,13 @@
 <body class="bg-gray-100 font-sans">
     <div class="container mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
         <!-- Metrics Section -->
-        <div class="md:col-span-1 lg:col-span-1">
+        <div class="md:col-span-1 lg:col-span-1 flex flex-col justify-center">
+            <div class="bg-blue-500 p-4 rounded-md shadow-md text-white mb-4">
+                <h2 class="text-xl font-semibold mb-2">Metrics Section</h2>
+                <!-- Example Metrics Content -->
+                <p id="totalPosts">Total Posts:</p>
+                <p id="totalUsers">Total Users:</p>
+            </div>
             <div class="bg-blue-500 p-4 rounded-md shadow-md text-white mb-4">
                 <h2 class="text-xl font-semibold mb-2">Metrics Section</h2>
                 <!-- Example Metrics Content -->
@@ -87,13 +93,16 @@
     </script>
 
     <script>
+        var users = []
+        var usersData
         var data = {
-            labels: ["January", "February", "March", "April", "May"],
+            labels: users,
             datasets: [{
                 label: "Monthly Sales",
                 backgroundColor: "rgba(75,192,192,1)",
                 borderColor: "rgba(75,192,192,1)",
-                data: [65, 59, 80, 81, 56]
+                data: usersData,
+                barThickness: 50,
             }]
         };
 
@@ -142,6 +151,13 @@
                     td.innerHTML = val.title;
                     tr.appendChild(td);
                     document.getElementById('products').appendChild(tr);
+                });
+            });
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => response.json())
+            .then(data => {
+                data.forEach((val) => {
+                    users.push(val.name)
                 });
             });
     </script>

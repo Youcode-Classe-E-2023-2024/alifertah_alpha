@@ -47,14 +47,16 @@
 	const formData = new FormData();
 	document.getElementById('register').addEventListener('click', (event)=>{
 		event.preventDefault()
-		formData.append(username, document.getElementById("username").value)
-		formData.append(email, document.getElementById("email").value)
-		formData.append(password, document.getElementById("password").value)
-		fetch("index.php?page=register_traitement")
+		formData.append("username", document.getElementById("username").value)
+		formData.append("email", document.getElementById("email").value)
+		formData.append("password", document.getElementById("password").value)
+		fetch("index.php?page=register_traitement", {
+			method: "POST",
+			body: formData
+		})
 		.then(response => response.json())
 		.then(data =>{
-			if(data.status == 200)
-				console.log("yes")
+			console.log(data.msg)
 		})
 	})
 </script>
