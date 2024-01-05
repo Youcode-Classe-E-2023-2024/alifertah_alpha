@@ -69,7 +69,13 @@
 				// document.getElementById('error').innerHTML = data.error
 			}
 			if(data.success){
-				window.location.href = "index.php?page=login";
+				Swal.fire({
+				title: "Success",
+				text: data.success,
+				confirmButtonColor: '#34D399',
+				icon: "success",
+				});
+				setTimeout(()=>{window.location.href = "index.php?page=login";}, 1000)
 			}
 		})
 	})
