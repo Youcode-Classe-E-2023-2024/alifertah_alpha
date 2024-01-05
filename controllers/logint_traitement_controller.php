@@ -13,11 +13,11 @@ if (isset($_POST['email'], $_POST['password'])) {
     $stmt->close();
 
     if ($hashedPassword && password_verify($password, $hashedPassword)) {
+        $_SESSION['email'] = $email;
         echo json_encode(array("success" => "Login successful"));
     } else {
         echo json_encode(array("error" => "Invalid email or password"));
     }
-
     exit();
 }
 ?>
