@@ -94,29 +94,51 @@
 
     <script>
         var users = []
-        var usersData
-        var data = {
-            labels: users,
-            datasets: [{
-                label: "Monthly Sales",
-                backgroundColor: "rgba(75,192,192,1)",
-                borderColor: "rgba(75,192,192,1)",
-                data: usersData,
-                barThickness: 50,
-            }]
-        };
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => response.json())
+            .then(data => {
+                users = data.map(user => ({
+                    id: user.id,
+                    name: user.name,
+                    counter: 0
+                }))
+                return fetch("https://jsonplaceholder.typicode.com/posts");
+            })
+            .then(response => response.json())
+            .then(postsData => {
+                postsData.forEach(post => {
+                    const user = users.find(user => user.id === post.userId);
+                    if (user) {
+                        user.counter++;
+                    }
+                });
+                createChart();
+            })
+            
+            function createChart() {
+                var data = {
+                    labels: users.map(name =>(name.name)),
+                    datasets: [{
+                        label: "Monthly Sales",
+                        backgroundColor: "rgba(75,192,192,1)",
+                        borderColor: "rgba(75,192,192,1)",
+                        data: users.map(name =>(name.counter)),
+                        barThickness: 50,
+                    }]
+                };
 
-        var options = {
-            responsive: true,
-        };
+                var options = {
+                    responsive: true,
+                };
 
-        var ctx = document.getElementById("myChart").getContext("2d");
+                var ctx = document.getElementById("myChart").getContext("2d");
 
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: options
-        });
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: data,
+                    options: options
+                });
+            }
 
         let countPosts = 0;
         fetch("https://jsonplaceholder.typicode.com/posts")
@@ -153,13 +175,7 @@
                     document.getElementById('products').appendChild(tr);
                 });
             });
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then(response => response.json())
-            .then(data => {
-                data.forEach((val) => {
-                    users.push(val.name)
-                });
-            });
+        
     </script>
 </body>
 
