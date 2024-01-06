@@ -22,7 +22,7 @@
 		
 		<div class="pt-10 flex items-center justify-between">
 			<a
-				href="#1"
+				href="index.php?page=pass_recover"
 				class="inline-block text-green-700 hover:text-green-900 align-baseline font-normal text-sm"
 			>
 				Forgot password?

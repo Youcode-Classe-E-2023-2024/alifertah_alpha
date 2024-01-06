@@ -27,7 +27,7 @@
             if(isset($_SESSION["email"])){
                 echo ("
                     <div class='flex'>
-                        <a href='index.php?page=rooms' class='text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2'>rooms</a>
+                        <a href='index.php?page=manage_users' class='text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2'>manage users</a>
                         <a href='index.php?page=create_room' class='text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2'>create room</a>
                         <a href='index.php?page=profile&username=$_SESSION[email]' class='text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2'>profile</a>
                         <form method='post' action='index.php?page=login'>
